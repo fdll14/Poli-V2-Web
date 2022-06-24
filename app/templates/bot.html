@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Poli - Teknik Informatika</title>
+
+    <!-- Favicons -->
+    <link href="/static/upload/images/favicon.png" rel="icon">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <!-- Vendor CSS Files -->
+    <link href="/static/frontend/vendor/aos/aos.css" rel="stylesheet">
+    <link href="/static/frontend/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/frontend/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/static/frontend/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/static/frontend/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/static/frontend/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="/static/frontend/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+    </style>
+    <link rel="stylesheet" type="text/css" href="/static/frontend/css/bot.css">
+
+</head>
+
+<body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top d-flex align-items-center header-transparent">
+        <div class="container d-flex align-items-center justify-content-between">
+
+            <div class="logo">
+                <h1><a href="/#hero"><span>teknik Informatika</span></a></h1>
+                <!-- Uncomment below if you prefer to use an image logo -->
+                <!-- <a href="index.html"><img src="static/frontend//img/logo.png" alt="" class="img-fluid"></a>-->
+            </div>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto active" href="/">Home</a></li>
+                    <li><a class="nav-link scrollto" href="/#about">Tentang</a></li>
+                    <li><a class="nav-link scrollto" href="/#kompetensi">Kompetensi</a></li>
+                    <li><a class="nav-link scrollto" href="/#testimonials">Testimoni</a></li>
+                    <li><a class="nav-link scrollto" href="/#mahasiswa">Mahasiswa</a></li>
+                    <li><a class="nav-link scrollto" href="/#faq">F.A.Q</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
+        </div>
+    </header><!-- End Header -->
+    <!-- ======= Bot Section ======= -->
+    <div class="row">
+        <section class="column center" id="bot" style="margin-top: 100px;">
+
+            <div id="chatbox">
+                <p class="botText"><span>Hai! Aku Poli.</span></p>
+            </div>
+            <form id="userInput" #formcontrol="ngForm">
+                <input type="hidden" name="gender" id="gender" value="">
+                <input id="textInput" type="text" name="msg" placeholder="Message" required>
+                <button type="button" class="buttonInput" onclick="getGender(this)">Kirim</button>
+            </form>
+
+            <script>
+                async function getGender(col) {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                    await fetch(`/bot/get` + col.value)
+                        .then(response => response.json())
+                        .then(data => {
+                            $('#userInput').attr('action', `/bot/get`);
+                            $('#gender').val(data.gender[1]);
+                            bot_answer()
+                        })
+                        .catch(error => console.error('Error:', error));
+
+                }
+                function bot_answer() {
+                    var rawText = $("#textInput").val();
+                    var genderText = $("#gender").val();
+                    var userHtml = '<p class="userText"><span>' + rawText + '</span></p>';
+                    $("#textInput").val("");
+                    $("#chatbox").append(userHtml);
+                    document.getElementById('userInput').scrollIntoView({ block: 'start', behavior: 'smooth' });
+                    $.get("/get", { msg: rawText, gender: genderText }).done(function (data) {
+                        var botHtml = '<p class="botText"><span>' + data + '</span></p>';
+                        $("#chatbox").append(botHtml);
+                        document.getElementById('userInput').scrollIntoView({ block: 'start', behavior: 'smooth' });
+                    });
+                }
+            </script>
+        </section>
+
+        <div class="column right"><img style="visibility: hidden;" src="{{ url_for('video') }}"></div>
+        ​
+    </div>
+
+</body>
+
+</html>

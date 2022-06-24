@@ -1,0 +1,48 @@
+{% include "admin/layout/top.html" %} {% block content%} {% endblock %}
+
+<div class="clearfix"></div>
+<div class="row" >
+    <div class="col-md-8 col-sm-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>History Mobile</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Hasil Gender</th>
+                                        <th>Akurasi</th>
+                                        <th>Foto</th>
+                                        <th>tanggal</th>
+                                    </tr>
+                                </thead>
+                                    {% for d in data %}
+                                    <tr>
+                                        <td>{{loop.index}}</td>
+                                        <td>{{ d[1] }}</td>
+                                        <td>{{ d[2] }}%</td>
+                                        <td>{{ d[3] }}</td>
+                                        <td>{{ d[4] }}</td>
+                                    </tr>
+                                    {% endfor %}
+                                <tbody>
+                                
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% include "admin/layout/bottom.html" %} 

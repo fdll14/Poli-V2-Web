@@ -1,0 +1,243 @@
+
+          
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            &copy; <a href="/">POLI</a> 2021
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+        
+    <div class="container d-flex justify-content-center">
+        <div id="my-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content border-0">
+                    <div class="modal-body p-0">
+                        <div class="card border-0 p-sm-3 p-2 justify-content-center">
+                            <div class="card-header pb-0 bg-white border-0 ">
+                                <div class="row">
+                                    <div class="col ml-auto"><button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true">&times;</span> </button></div>
+                                </div>
+                                <h4 class="font-weight-bold mb-2">Apakah anda yakin ?</h4>
+                                <p class="text-muted" style="font-size: larger;"> Satu item akan dihapus !</p>
+                            </div>
+                            <div class="card-body px-sm-4 mb-2 pt-1 pb-0">
+                                <div class="row justify-content-end no-gutters">
+                                    <div class="col-auto"><button type="button" class="btn btn-light text-muted" data-dismiss="modal">BATAL</button></div>
+                                    <div class="col-auto"><button type="button" class="btn btn-danger px-4 confirm_delete" data-dismiss="modal">HAPUS</button></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- jQuery -->
+    <script src="/static/vendors/jquery/dist/jquery.min.js"></script>
+    <script src="/static/vendors/jquery-validation/jquery.validate.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="/static/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- FastClick -->
+    <script src="/static/vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="/static/vendors/nprogress/nprogress.js"></script>
+    <!-- Chart.js -->
+    <script src="/static/vendors/Chart.js/dist/Chart.min.js"></script>
+    <!-- gauge.js -->
+    <script src="/static/vendors/gauge.js/dist/gauge.min.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="/static/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- iCheck -->
+    <script src="/static/vendors/iCheck/icheck.min.js"></script>
+    <!-- Skycons -->
+    <script src="/static/vendors/skycons/skycons.js"></script>
+    <!-- Flot -->
+    <script src="/static/vendors/Flot/jquery.flot.js"></script>
+    <script src="/static/vendors/Flot/jquery.flot.pie.js"></script>
+    <script src="/static/vendors/Flot/jquery.flot.time.js"></script>
+    <script src="/static/vendors/Flot/jquery.flot.stack.js"></script>
+    <script src="/static/vendors/Flot/jquery.flot.resize.js"></script>
+    <!-- Flot plugins -->
+    <script src="/static/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
+    <script src="/static/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
+    <script src="/static/vendors/flot.curvedlines/curvedLines.js"></script>
+    <!-- DateJS -->
+    <script src="/static/vendors/DateJS/build/date.js"></script>
+    <!-- JQVMap -->
+    <script src="/static/vendors/jqvmap/dist/jquery.vmap.js"></script>
+    <script src="/static/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
+    <script src="/static/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="/static/vendors/moment/min/moment.min.js"></script>
+    <script src="/static/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- Dropzone.js -->
+    <script src="/static/vendors/dropify/dist/js/dropify.min.js"></script>
+    <!-- Select2.js -->
+    <script src="/static/vendors/select2/dist/js/select2.min.js"></script>
+    
+    <!-- Custom Theme Scripts -->
+    <script src="/static/backend/js/custom.min.js"></script>
+
+    <!-- Datatables -->
+    <script src="/static/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="/static/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="/static/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="/static/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="/static/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="/static/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="/static/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="/static/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="/static/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="/static/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="/static/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="/static/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="/static/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="/static/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="/static/vendors/pdfmake/build/vfs_fonts.js"></script>
+	
+    <script>
+        $('.dropify').dropify();
+        $('.select2').select2();
+        $('table').DataTable({});
+        async function getAnswerError(col) { 
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+          await fetch(`/admin/answer-error/` + col.value)
+            .then(response => response.json())
+            .then(data => {
+                $('#myForm').attr('action', `/admin/answer-error/update`);
+                $('#id_hidden').val(col.value);
+
+                $('#pertanyaan').val(data.result[1]);
+                $('#status').val(data.result[2]);
+            })
+            .catch(error => console.error('Error:', error));
+
+            $('.btn-update').removeClass('d-none');
+            $('.btn-batal').removeClass('d-none');
+            $('.btn-simpan').addClass('d-none');
+
+          }
+          $('.btn-batal').on('click', () => {
+            $('#myForm').attr('action', `/admin/answer-error/all`);
+
+            $('.btn-update').addClass('d-none');
+            $('.btn-batal').addClass('d-none');
+            $('.btn-simpan').removeClass('d-none');
+
+            $('#pertanyaan').val('');
+            $('#status').val('');
+
+          })
+          async function getDataset(col) { 
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+          await fetch(`/admin/dataset/` + col.value)
+            .then(response => response.json())
+            .then(data => {
+                $('#myForm').attr('action', `/admin/dataset/update`);
+                $('#id_hidden').val(col.value);
+
+                $('#tag').val(data.result[1]);
+                $('#pattern').val(data.result[2]);
+                $('#response').val(data.result[3]);
+                $('#context').val(data.result[4]);
+                console.log(data)
+            })
+            .catch(error => console.error('Error:', error));
+
+            $('.btn-update').removeClass('d-none');
+            $('.btn-batal').removeClass('d-none');
+            $('.btn-simpan').addClass('d-none');
+
+          }
+          $('.btn-batal').on('click', () => {
+            $('#myForm').attr('action', `/admin/dataset/all`);
+
+            $('.btn-update').addClass('d-none');
+            $('.btn-batal').addClass('d-none');
+            $('.btn-simpan').removeClass('d-none');
+
+            $('#tag').val('');
+            $('#pattern').val('');
+            $('#response').val('');
+
+          })
+        $('#myForm').validate({
+            rules: {
+                nama: {
+                    required: true,
+                    maxlength: 50
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+                no_hp: {
+                    required: true,
+                    minlength: 10,
+                    maxlength: 14,
+                    number: true
+                },
+                jk: {
+                    required: true,
+                },
+                tgl_lahir: {
+                    required: true,
+                },
+                alamat: {
+                    required: true,
+                },
+                kecamatan: {
+                    required: true,
+                },
+                kelurahan: {
+                    required: true,
+                },
+                deskripsi: {
+                    required: true,
+                    maxlength: 1000,
+                },
+            },
+            errorPlacement: function(error, element) {
+                var customError = $([
+                    '<span class="invalid-feedback d-block">',
+                    '  <span class="mb-0 d-block">',
+                    '    <span class="initialism form-error-icon badge badge-danger">Error</span>',
+                    '  </span>',
+                    '</span>'
+                ].join(""));
+                // Add `form-error-message` class to the error element
+                error.addClass("form-error-message");
+
+                // Insert it inside the span that has `mb-0` class
+                error.appendTo(customError.find("span.mb-0"));
+
+                // Insert your custom error
+                customError.insertAfter(element);
+            }
+        });
+        $(document).on('click', '.delete_btn_member', function(e){
+            e.preventDefault();
+            let href = $(this).attr('href');
+            $('.confirm_delete').on('click', function(){
+                window.location.href = href;
+            })
+        })
+    </script>
+  </body>
+</html>
