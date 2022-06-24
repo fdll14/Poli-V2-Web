@@ -12,6 +12,10 @@ Repository ini merupakan repository untuk web appnya dan kalian bisa cek untuk r
 ![preview](https://i.ibb.co/kc0hkJw/Whats-App-Image-2022-06-24-at-17-56-55.jpg)
 Untuk ppt [klik disini](https://docs.google.com/presentation/d/10fo4D1fDanBXjrmUoQPyTgO2SSrXGNjB/edit?usp=sharing&ouid=114853264552823981626&rtpof=true&sd=true)
 
+## Noted
+
+Ada 2 file yang tidak bisa saya upload karna ukuran file yang terlalu besar yaitu file model.h5 yang seharusnya ada di app/resources/ dan data.npy yang seharusnya ada di trainingDataTarget udah nyoba tutorial [LFS](https://git-lfs.github.com/) namun masih gagal karna saya kurang familiar dengan LFS.
+
 ## Preview tampilan web app
 ![Landingpage](https://i.ibb.co/x2GMMYH/image.png) <br />
 **Landingpage**, ini merupakan tampilan awal landingpage. <br />
